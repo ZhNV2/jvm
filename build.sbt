@@ -1,4 +1,4 @@
-name := "hangmanBot"
+name := "debtBot"
 
 version := "0.1"
 

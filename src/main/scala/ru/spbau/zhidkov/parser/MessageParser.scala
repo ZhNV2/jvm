@@ -21,7 +21,7 @@ class MessageParser extends RegexParsers {
 
   private val getDebtParser: Parser[GetDebt] = nameParser <~ "?" ^^ (name => GetDebt(name))
 
-  private val getSumDebtsParser: Parser[GetSumDebts] = "=".r ^^ { _ => GetSumDebts() }
+  private val getSumDebtsParser: Parser[UserMessage] = "=".r ^^ { _ => GetSumDebts }
 
   val userMessage: Parser[UserMessage] = getSumDebtsParser | getDebtParser | addDebtParser
 
@@ -42,7 +42,7 @@ object MessageParser extends MessageParser {
 
   case class GetDebt(name: String) extends UserMessage
 
-  case class GetSumDebts() extends UserMessage
+  case object GetSumDebts extends UserMessage
 
   case object WrongMessage extends UserMessage
 

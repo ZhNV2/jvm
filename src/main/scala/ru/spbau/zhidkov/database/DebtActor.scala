@@ -22,6 +22,7 @@ class DebtActor extends PersistentActor {
         } else {
           chatMap.update(name, newDebt)
         }
+        sender ! "success"
     }
   }
 
@@ -52,7 +53,7 @@ class DebtActor extends PersistentActor {
       }
   }
 
-  override def persistenceId = "hangman-database"
+  override def persistenceId = "debt-database"
 
 }
 
